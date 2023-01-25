@@ -4,12 +4,8 @@ import { uploadPhoto, createUser } from './utils';
 // it takes an array of promises as an argument.
 export default function handleProfileSignup() {
   return Promise.all([uploadPhoto(), createUser()])
-  /* The .then() method is used to attach a callback function that will be called
-  with an array of the resolved values of the input promises. The callback function
-  uses destructuring assignment to extract the body, firstName and lastName properties
-  of the objects and logs their values to the console. */
-    .then(([photoResponse, userResponse]) => {
-      console.log(photoResponse.body, userResponse.firstName, userResponse.lastName);
+    .then((values) => {
+      console.log(`${values[0].body} ${values[1].firstName} ${values[1].lastName}`);
     })
     .catch(() => { console.log('Signup system offline'); });
 }
