@@ -8,7 +8,7 @@ var studentTwo = {
     firstName: 'Michelle',
     lastName: 'Ambogo',
     age: 11,
-    location: 'Vihiga',
+    location: 'Vihiga'
 };
 var studentsList = [studentOne, studentTwo];
 var table = document.getElementById("myTable");
@@ -19,4 +19,3 @@ studentsList.forEach(function (student) {
     nameCell.innerHTML = "".concat(student.firstName, " ").concat(student.lastName);
     locationCell.innerHTML = student.location;
 });
-//# sourceMappingURL=main.js.map
