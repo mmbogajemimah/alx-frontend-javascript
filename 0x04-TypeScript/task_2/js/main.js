@@ -1,3 +1,5 @@
+"use strict";
+exports.__esModule = true;
 var Director = /** @class */ (function () {
     function Director() {
     }
@@ -28,12 +30,27 @@ var Teacher = /** @class */ (function () {
 }());
 function createEmployee(salary) {
     if (salary > 500) {
-        return 'Teacher';
+        return new Teacher();
     }
     else {
-        return 'Director';
+        return new Director();
     }
 }
-console.log(createEmployee(200));
-console.log(createEmployee(1000));
-console.log(createEmployee('$500'));
+//console.log(createEmployee(200));
+//console.log(createEmployee(1000));
+//console.log(createEmployee('$500'));
+function isDirector(employee) {
+    return employee.workDirectorTasks !== undefined;
+}
+function executeWork(employee) {
+    var result = undefined;
+    (isDirector(employee)) ? result = employee.workDirectorTasks() : result = employee.workTeacherTasks();
+    // if (isDirector(employee)) {
+    //     return employee.workDirectorTasks()
+    // } else {
+    //     return employee.workTeacherTasks()
+    // }
+    return result;
+}
+console.log(executeWork(createEmployee(200)));
+console.log(executeWork(createEmployee(1000)));
